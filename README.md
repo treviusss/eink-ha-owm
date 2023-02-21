@@ -1,5 +1,5 @@
 # Home Assistant and OpenWeatherMap Dashboard for LILYGO T5 4.7 inch E-paper display
-![Eink example](eink_inside_case.jpeg)
+![Eink example](eink_inside_case.jpg)
 
 Modification of project by [rbaron](https://github.com/rbaron/eink-ha) where data from Home Assistant and OpenWeatherApi is accumulated and displayed onto LilyGo T5 4.7 inch e-paper display
 The 3D printed case is made by user [3DMath](https://www.thingiverse.com/thing:4890972).
