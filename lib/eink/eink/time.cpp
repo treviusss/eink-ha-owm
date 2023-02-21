@@ -4,6 +4,8 @@
 
 #include <sstream>
 
+#include "eink/logger.h"
+
 namespace eink {
 namespace {
 constexpr long kGMTOffsetS = 3600;
@@ -17,13 +19,14 @@ constexpr int kYear = 365 * kDayS;
 }  // namespace
 
 void ConfigNTP() {
-  configTime(kGMTOffsetS, kDayLightOffsetS, "pool.ntp.org");
+  // configTime(kGMTOffsetS, kDayLightOffsetS, "pool.ntp.org");
+  configTzTime("CET-1CEST,M3.5.0,M10.5.0/3", "pool.ntp.org");
 }
 
 struct tm GetCurrentTime() {
   struct tm t;
   int res = getLocalTime(&t);
-  Serial.printf("Get local time response: %d\n", res);
+  LOG("Get local time response: %d\n", res);
   return t;
 }
 
@@ -63,7 +66,7 @@ struct tm ParseISODate(const char *in) {
 
 std::string FormatTime(const struct tm &t) {
   char buf[64];
-  strftime(buf, sizeof(buf), "%A %b %d %H:%M", &t);
+  strftime(buf, sizeof(buf), "%a, %d.%m.%y %H:%M", &t);
   return buf;
 }
 
